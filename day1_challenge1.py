@@ -1,26 +1,22 @@
 
 
+def calculate_sum_top_3_method1(file_handle):
+    currSum = 0
+    list_of_all_summs = []
+
+    for line in file_handle:
+        if (line!="\n"):
+            currSum += int(line)
+            
+        else:
+            list_of_all_summs.append(currSum)
+            currSum = 0
+
+
+    list_of_all_summs.sort()
+    finalSum = list_of_all_summs[-1] + list_of_all_summs[-2] + list_of_all_summs[-3]
+    print(finalSum)
+
+
 f = open("8462.txt", "r")
-maxSum = 0
-currSum = 0
-top3list = [0, 0, 0]
-dict_index = 0
-dict_of_all = {}
-
-for line in f:
-    if (line!="\n"):
-        currSum += int(line)
-        
-    else:
-        dict_of_all[dict_index] = currSum
-        currSum = 0
-        dict_index += 1
-
-final_list = []
-for keys in dict_of_all.keys():
-    final_list.append(dict_of_all[keys])
-
-final_list.sort()
-print(final_list)
-finalSum = final_list[-1] + final_list[-2] + final_list[-3]
-print(finalSum)
+calculate_sum_top_3_method1(f)
